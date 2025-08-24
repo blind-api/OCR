@@ -27,13 +27,13 @@ const gracefulShutdown = (signal) => {
 // Start server
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`
-🚀 Advanced OCR API Server Started Successfully!`
-);
-  
-  // Handle health checks
-  app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
-  });
+🚀 Advanced OCR API Server Started Successfully!
+📍 Server running on: http://localhost:${PORT}
+🌍 Environment: ${config.server.nodeEnv}
+🔗 API Base URL: http://localhost:${PORT}/api/v1
+📖 Documentation: http://localhost:${PORT}/api/v1/docs
+✅ Health Check: http://localhost:${PORT}/health
+  `);
 });
 
 // Handle graceful shutdown signals
@@ -53,4 +53,3 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 module.exports = server;
-
